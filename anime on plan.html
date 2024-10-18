@@ -25,6 +25,34 @@
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
+
+        .search-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 20px 0;
+      }
+      .search-bar {
+          width: 50%;
+          padding: 15px 5px;
+          border: 2px solid #03a9f4;
+          border-radius: 20px;
+          background-color: #333;
+          color: #ffffff;
+          font-size: 16px;
+          outline: none;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+          transition: border-color 0.3s ease, background-color 0.3s ease;
+      }
+
+      .search-bar::placeholder {
+          color: #b0bec5;
+      }
+
+      .search-bar:focus {
+          border-color: #ffeb3b;
+          background-color: #444;
+      }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -36,19 +64,19 @@
             text-align: center;
         }
         th {
-            background-color: #333; /* خلفية رؤوس الأعمدة */
+            background-color: #333;
         }
         img {
             display: block;
             margin: 0 auto;
-            border: 5px solid #007bff; /* إطار أزرق */
+            border: 5px solid #007bff;
             border-radius: 8px;
-            background-color: #6f42c1; /* خلفية ليليا */
+            background-color: #6f42c1;
             max-width: 100%;
             height: auto;
         }
         a {
-            color: #4a90e2; /* روابط */
+            color: #4a90e2;
             text-decoration: none;
         }
         a:hover {
@@ -57,13 +85,32 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>جدول ترتيب مشاهدة الأنميات</h1>
+  <script>
+ function searchAnime() {
+     const input = document.getElementById('searchInput');
+     const filter = input.value.toLowerCase();
+     const animeSections = document.querySelectorAll('.anime-section');
 
-
+     animeSections.forEach(section => {
+         const title = section.querySelector('h2').textContent.toLowerCase();
+         if (title.includes(filter)) {
+             section.style.display = '';
+         } else {
+             section.style.display = 'none';
+         }
+     });
+ }
+ </script>
+      <br>
+      <p> </p>
+      <br>
+      <div class="search-container">
+        <input type="text" id="searchInput" class="search-bar" onkeyup="searchAnime()" placeholder="Search">
+    </div>
+      <br>
           <div class="anime-section">
               <h2>Re:ZERO</h2>
-              <img src="rezero.jpeg" alt="Re:ZERO">
+              <img src="rezero.jpeg" alt="Re:ZERO Anime">
               <table>
                   <tr>
                       <th>الترتيب</th>
@@ -117,7 +164,7 @@
           </div>
           <div class="anime-section">
               <h2>Parasyte</h2>
-              <img src="parasyte.jpeg" alt="Parasyte">
+              <img src="parasyte.jpeg" alt="Parasyte Anime">
               <table>
                   <tr>
                       <th>الترتيب</th>
@@ -465,7 +512,8 @@
               <!-- أضف المزيد من الفصول حسب الحاجة -->
           </table>
       </div>
-      <div>
+      <div class="anime-section">
+                <h2>One Piece</h2>
     <img src="one_piece.jpeg" alt="One Piece" width="400" height="350">
     <table>
         <tr>
@@ -518,7 +566,8 @@
         </tr>
     </table>
 </div>
-<div>
+<div class="anime-section">
+          <h2>Jujutsu Kaisen</h2>
     <img src="jujutsu_kaisen.jpeg" alt="Jujutsu Kaisen" width="400" height="350">
     <table>
         <tr>
@@ -571,8 +620,9 @@
         </tr>
     </table>
 </div>
-<div>
-    <img src="demon_slayer.jpeg" alt="Demon Slayer" width="400" height="350">
+<div class="anime-section">
+          <h2>Demon Slayer</h2>
+              <img src="demon_slayer.jpeg" alt="Demon Slayer" width="400" height="350">
     <table>
         <tr>
             <th>الترتيب</th>
